@@ -5,7 +5,7 @@
     --background-color: #1e1e1e;
     --text-color: #ecf0f1;
     --highlight-color: #ffffff;
-    --shadow-color: rgb(8, 150, 233);
+    --shadow-color: rgba(8, 150, 233, 0.7);
     --border-radius: 12px;
     --transition-speed: 0.3s;
     --focus-outline: 3px solid #9b59b6;
@@ -59,6 +59,7 @@ nav {
     background: var(--primary-color);
     box-shadow: 0 4px 12px var(--shadow-color);
     position: relative;
+    z-index: 1;
 }
 
 nav ul {
@@ -100,11 +101,13 @@ nav ul li a::before {
     z-index: 0;
 }
 
-nav ul li a:hover::before, nav ul li a:focus::before {
+nav ul li a:hover::before,
+nav ul li a:focus::before {
     transform: translate(-50%, -50%) scale(1);
 }
 
-nav ul li a:hover, nav ul li a:focus {
+nav ul li a:hover,
+nav ul li a:focus {
     color: #fff;
     background-color: var(--secondary-color);
     transform: translateY(-3px);
@@ -131,10 +134,6 @@ section {
 section:hover {
     background: rgba(0, 0, 0, 0.7);
     box-shadow: 0 6px 20px var(--shadow-color);
-}
-
-h2, h3 {
-    margin-top: 0;
 }
 
 h2 {
@@ -249,15 +248,17 @@ footer a {
     color: var(--highlight-color);
     text-decoration: none;
     font-weight: 600;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
-footer a:hover, footer a:focus {
+footer a:hover,
+footer a:focus {
     color: var(--secondary-color);
+    text-shadow: 1px 1px 5px var(--shadow-color);
+    transform: scale(1.05);
 }
 
 /* Breakpoints */
-
 @media (max-width: 1200px) {
     main {
         padding: 1.5rem;
@@ -279,6 +280,7 @@ footer a:hover, footer a:focus {
 @media (max-width: 992px) {
     nav ul {
         flex-direction: column;
+        align-items: center;
     }
 
     nav ul li {
@@ -342,7 +344,13 @@ footer a:hover, footer a:focus {
         font-size: 1.8rem;
     }
 
-    section h3 {
-        font-size: 1.5rem;
+    button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    input, textarea, select {
+        padding: 0.5rem;
+        font-size: 0.875rem;
     }
 }
